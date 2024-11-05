@@ -53,12 +53,12 @@ class SiteAnalyzer extends LitElement {
         const url = input.endsWith('site.json') ? input : `${input.endsWith('/') ? input : `${input}/`}site.json`;
         try {
             const response = await fetch(url);
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) throw new Error('The network response was not okay.');
 
             this.siteData = await response.json();
             this.validateData(this.siteData);
 
-            this.siteTitle = this.siteData.title || 'No title available';
+            this.siteTitle = this.siteData.title || 'There is no title available.';
 
             this.items = this.siteData.items || [];
         } catch (error) {
@@ -68,7 +68,7 @@ class SiteAnalyzer extends LitElement {
 
     validateData(data) {
         if (!data.name || !data.description || !data.logo || !data.theme || !data.created || !data.lastUpdated || !data.hexCode) {
-            throw new Error('site.json is missing required fields');
+            throw new Error('The site.json is missing required fields.');
         }
     }
 }
